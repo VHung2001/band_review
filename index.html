@@ -7,6 +7,7 @@
     <title>The Band</title>
     <link rel="icon" type="image/x-icon" href="https://music.apple.com/assets/favicon/favicon-180.png">
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/responsive.css">
     <link rel="stylesheet" href="./assets/font/themify-icons/themify-icons.css">
 </head>
 <body>
@@ -19,7 +20,7 @@
                 <li><a href="#tour">Tour</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
-                    <a href="">More
+                    <a href="#">More
                         <i class="nav-arrow-down ti-angle-down"></i>
                     </a>
                     <ul class="sub-nav">
@@ -35,6 +36,10 @@
 
             <div class="search-btn">
                 <i class="search-icon ti-search"></i>
+            </div>
+
+            <div id="mobile-menu" class="mobile-menu-btn">
+                <i class="menu-icon ti-menu"></i>
             </div>
 
             <!-- End Search -->
@@ -228,6 +233,31 @@
         modalContainer.addEventListener('click', function(event){
             event.stopImmediatePropagation()
         })
+    </script>
+
+    <script>
+        var header = document.getElementById('header');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var headerHeight = header.clientHeight;
+
+        mobileMenu.onclick = function() {
+            var isClose = header.clientHeight === headerHeight;
+            if (isClose) {
+                header.style.height = 'auto';
+            }
+            else {
+                header.style.height = null ;
+            }
+        }
+        // tu dong menu
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"]');
+        for (var i = 0; i < menuItems.length; i++){
+            var menuItem = menuItems[i];
+            
+            menuItem.onclick = function() {
+                header.style.height = null ;
+            }
+        }
     </script>
 </body>
 </html>
